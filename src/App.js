@@ -12,20 +12,21 @@ function App() {
   let interval = useRef();
 
   const startTimer = () => {
-    const countDownDate = new Date('March 19, 2021 11:56:60 ').getTime();
+    const countDownDate = new Date('April 19, 2021 11:56:60 ');
 
     interval = setInterval(() => {
-      const now = new Date().getTime();
+      const now = new Date();
       const distance = countDownDate - now;
 
       const days = Math.floor((distance / (1000 * 60 * 60 * 24)));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      const hours = Math.floor((distance / (1000 * 60 * 60) % 24));
+      const minutes = Math.floor((distance / (1000 * 60) % 60));
+      const seconds = Math.floor((distance / (1000) % 60));
+
 
       if (distance < 0) {
         // stop timer
-        clearInterval(interval.current);
+        clearInterval(interval);
       } else {
         // update timer
         setTimerDays(days);
@@ -51,21 +52,51 @@ function App() {
 
         <div className="container px-4">
 
-          <div class="container overflow-hidden">
-            <div class="row gx-3">
+          <div className="container  overflow-hidden">
+            <div className="row gx-3 time-div">
               <div className="days text-center col-3">
-                <div className="py-md-5 py-3">{timerDays}
-                </div>
+                <span className="top"></span>
+                <span className="top-back"></span>
+                <span></span>
+
+                <div className="py-md-5 py-3">{timerDays}</div>
+
+                <span className="bottom"></span>
+                <span className="bottom-back"></span>
+                <span></span>
               </div>
               <div className="minutes text-center col-3">
+                <span className="top"></span>
+                <span className="top-back"></span>
+                <span></span>
+
                 <div className="py-md-5 py-3">{timerHours}</div>
+
+                <span className="bottom"></span>
+                <span className="bottom-back"></span>
+                <span></span>
               </div>
               <div className="hours text-center col-3">
+                <span className="top"></span>
+                <span className="top-back"></span>
+                <span></span>
+
                 <div className="py-md-5 py-3">{timerMinutes}</div>
+
+                <span className="bottom"></span>
+                <span className="bottom-back"></span>
+                <span></span>
               </div>
               <div className="seconds text-center col-3">
-                <div className="py-md-5 py-3">{timerSeconds}
-                </div>
+                <span className="top"></span>
+                <span className="top-back"></span>
+                <span></span>
+
+                <div className="py-md-5 py-3">{timerSeconds}</div>
+
+                <span className="bottom"></span>
+                <span className="bottom-back"></span>
+                <span></span>
               </div>
 
             </div>

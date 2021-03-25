@@ -15,6 +15,18 @@
     padding-top: 6rem;
 }
 
+.time-div{
+    color: hsl(345, 95%, 68%);
+    background-color: hsl(237, 18%, 59%);
+
+}
+
+.time-div::after, .time-div::before {
+    content: '';
+    top: calc(50% - 5px);
+    border-radius: 50%;
+}
+
 .row>div>div {
     background-color: #34364F;
     font-size: 4rem;
